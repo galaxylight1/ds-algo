@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        pythagoreanTriplets(args);
+        benjaminBulbs(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -211,5 +211,17 @@ public class ds {
         }
 
         System.out.println(flag);
+    }
+
+    public static void benjaminBulbs(String[] args) {
+        int n = scn.nextInt();
+
+        int count = 0;
+        for(int i = 1; i <= n; i++) {
+            double sqrt = Math.sqrt(i);
+            if(sqrt % 1 == 0) count++;
+        }
+
+        System.out.println("### bulbs -> " + count);
     }
 }
