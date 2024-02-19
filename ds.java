@@ -189,6 +189,27 @@ public class ds {
     }
 
     public static void pythagoreanTriplets(String[] args) {
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        int c = scn.nextInt();
         
+        boolean flag = false;
+
+        // find greatest of 3 no's
+        int max = a;
+        if(b >= max) max = b;
+        if(c >= max) max = c;
+
+        if(max == a) {
+            flag = ((b * b + c * c) == (a * a));
+        }
+        else if(max == b) {
+            flag = ((a * a + c * c) == (b * b));
+        }
+        else if(max == c) {
+            flag = ((b * b + a * a) == (c * c));
+        }
+
+        System.out.println(flag);
     }
 }
