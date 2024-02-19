@@ -224,4 +224,22 @@ public class ds {
 
         System.out.println("### bulbs -> " + count);
     }
+
+    public static void arrayIntro(String[] args) {
+        int[] arr;
+        arr = new int[3];
+        arr[0] = 1;
+        arr[1] = 23;
+        arr[2] = 15;
+
+        // memory management, deep copy, shallow copy, performance
+        int[] one = new int[3];
+        one[0] = 10;
+        one[1] = 20;
+        one[2] = 30;
+    }
+
+    public static void spanOfArray(String[] args) {
+        
+    }
 }
