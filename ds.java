@@ -285,4 +285,21 @@ public class ds {
             System.out.println();
         }
     }
+
+    public static void sumOfTwoArrays(String[] args) {
+        int n1 = scn.nextInt();
+        int[] arr1 = new int[n1];
+        for(int i = 0; i < arr1.length; i++) arr1[i] = scn.nextInt();
+        int n2 = scn.nextInt();
+        int[] arr2 = new int[n2];
+        for(int j = 0; j < arr2.length; j++) arr2[j] = scn.nextInt();
+
+        int[] res = new int[n1 + n2 + 1];
+
+        int i = arr1.length - 1;
+        int j = arr2.length - 1;
+        while() {
+            
+        }
+    }
 }
