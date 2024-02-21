@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        barChart(args);
+        sumOfTwoArrays(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -294,12 +294,45 @@ public class ds {
         int[] arr2 = new int[n2];
         for(int j = 0; j < arr2.length; j++) arr2[j] = scn.nextInt();
 
-        int[] res = new int[n1 + n2 + 1];
+        int[] res = new int[Math.max(n1, n2) + 1];
 
         int i = arr1.length - 1;
         int j = arr2.length - 1;
-        while() {
-            
+        int k = res.length - 1;
+        int carry = 0;
+        while(i >= 0 && j >= 0) {
+            res[k] = carry + (arr1[i] + arr2[j]);
+
+            if(res[k] > 9) { // split it
+                carry = res[k] / 10;
+                res[k] = res[k] % 10;
+            } else carry = 0;
+
+            i--;
+            j--;
+            k--;
         }
+
+        while(i >= 0) {
+            res[k] = carry + arr1[i];
+            if(res[k] > 9) {
+                carry = res[k] / 10;
+                res[k] = res[k] % 10;
+            } else carry = 0;
+            i--;
+            k--;
+        }
+        while(j >= 0) {
+            res[k] = carry + arr2[j];
+            if(res[k] > 9) {
+                carry = res[k] / 10;
+                res[k] = res[k] % 10;
+            } else carry = 0;
+            j--;
+            k--;
+        }
+        if(carry > 0) res[k] = carry;
+
+        System.out.println("## res -> " + Arrays.toString(res));
     }
 }
