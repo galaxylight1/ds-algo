@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        nextGreaterElement(args);
+        stockSpan(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -421,6 +421,28 @@ public class ds {
         while(st.size() > 0) {
             int idx = st.pop();
             res[idx] = -1;
+        }
+
+        System.out.println(Arrays.toString(res));
+    }
+
+    public static void stockSpan(String[] args) {
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < arr.length; i++) arr[i] = scn.nextInt();
+        int[] res = new int[n];
+        Stack<Integer> st = new Stack<>();
+
+        for(int i = 0; i < arr.length; i++) {
+            while(st.size() > 0 && arr[i] > arr[st.peek()]) {
+                st.pop(); // keep removing smaller element until the last bigger element is found in history
+            }
+            if(st.size() == 0) {
+                res[i] = i + 1; // span = idx + 1
+            } else {
+                res[i] = i - st.peek();
+            }
+            st.push(i); // add to history
         }
 
         System.out.println(Arrays.toString(res));
