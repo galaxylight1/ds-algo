@@ -452,5 +452,12 @@ public class ds {
         String s = scn.nextLine();
         System.out.println(s);
         System.out.println(s.length());
+
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            System.out.println(ch);
+        }
+
+        // s.setCharAt(0) = 'z'; // won't work
     }
 }
