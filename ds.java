@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        balancedBrackets(args);
+        nextGreaterElement(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -401,5 +401,28 @@ public class ds {
         }
 
         System.out.println(true);
+    }
+
+    public static void nextGreaterElement(String[] args) {
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < arr.length; i++) arr[i] = scn.nextInt();
+        int[] res = new int[n];
+        Stack<Integer> st = new Stack<>();
+
+        for(int i = 0; i < arr.length; i++) {
+            while(st.size() > 0 && arr[i] > arr[st.peek()]) {
+                int idx = st.pop();
+                res[idx] = arr[i]; // nge
+            }
+            st.push(i);
+        }
+
+        while(st.size() > 0) {
+            int idx = st.pop();
+            res[idx] = -1;
+        }
+
+        System.out.println(Arrays.toString(res));
     }
 }
