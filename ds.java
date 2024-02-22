@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        duplicateBrackets(args);
+        balancedBrackets(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -370,5 +370,36 @@ public class ds {
         }
 
         System.out.println(false);
+    }
+
+    public static void balancedBrackets(String[] args) {
+        String inp = scn.nextLine();
+        Stack<Character> st = new Stack<>();
+
+        for(int i = 0; i < inp.length(); i++) {
+            char ch = inp.charAt(i);
+            if(ch == '(' || ch == '[' || ch == '{') st.push(ch);
+            else if(ch == ')') {
+                if(st.peek() != '(') {
+                    System.out.println(false);
+                    return;
+                }
+                st.pop();
+            } else if(ch == ']') {
+                if(st.peek() != '[') {
+                    System.out.println(false);
+                    return;
+                }
+                st.pop();
+            } else if(ch == '}') {
+                if(st.peek() != '{') {
+                    System.out.println(false);
+                    return;
+                }
+                st.pop();
+            }
+        }
+
+        System.out.println(true);
     }
 }
