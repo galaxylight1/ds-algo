@@ -481,13 +481,17 @@ public class ds {
         }
 
         /*
-         * Memory
-         * Interning
-         * New
-         * Immutability
-         * Performance
-         * Equal & ==
-         */
+        * Memory
+        * Interning
+        * New
+        * Immutability
+        * Performance
+        * Equal & ==
+        */
+
+        String s5 = "hello";
+        String s6 = "hello";
+        String s7 = new String("hello");
     }
 
     public static boolean isPalindrome(String s) {
