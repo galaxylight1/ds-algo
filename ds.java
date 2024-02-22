@@ -447,4 +447,10 @@ public class ds {
 
         System.out.println(Arrays.toString(res));
     }
+
+    public static void stringsIntro(String[] args) {
+        String s = scn.nextLine();
+        System.out.println(s);
+        System.out.println(s.length());
+    }
 }
