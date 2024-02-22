@@ -458,11 +458,11 @@ public class ds {
             System.out.println(ch);
         }
 
-        s.setCharAt(0) = 'z'; // won't work
+        // s.setCharAt(0) = 'z'; // won't work
         System.out.println(s.substring(0, 2));
         System.out.println(s.substring(4));
 
-        start point, end point
+        // start point, end point
         for(int i = 0; i < s.length(); i++) {
             for(int j = i + 1; j <= s.length(); j++) {
                 System.out.println(s.substring(i, j));
@@ -479,6 +479,15 @@ public class ds {
         for(int i = 0; i < parts.length; i++) {
             System.out.println(parts[i]);
         }
+
+        /*
+         * Memory
+         * Interning
+         * New
+         * Immutability
+         * Performance
+         * Equal & ==
+         */
     }
 
     public static boolean isPalindrome(String s) {
