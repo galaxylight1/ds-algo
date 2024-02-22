@@ -450,23 +450,34 @@ public class ds {
 
     public static void stringsIntro(String[] args) {
         String s = scn.nextLine();
-        System.out.println(s);
-        System.out.println(s.length());
+        // System.out.println(s);
+        // System.out.println(s.length());
 
-        for(int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            System.out.println(ch);
-        }
+        // for(int i = 0; i < s.length(); i++) {
+        //     char ch = s.charAt(i);
+        //     System.out.println(ch);
+        // }
 
         // s.setCharAt(0) = 'z'; // won't work
-        System.out.println(s.substring(0, 2));
-        System.out.println(s.substring(4));
+        // System.out.println(s.substring(0, 2));
+        // System.out.println(s.substring(4));
 
         // start point, end point
-        for(int i = 0; i < s.length(); i++) {
-            for(int j = i + 1; j <= s.length(); j++) {
-                System.out.println(s.substring(i, j));
-            }
+        // for(int i = 0; i < s.length(); i++) {
+        //     for(int j = i + 1; j <= s.length(); j++) {
+        //         System.out.println(s.substring(i, j));
+        //     }
+        // }
+
+        // String s1 = "hello";
+        // String s2 = "world";
+        // String s3 = s1 + s2;
+        // System.out.println(s3);
+        
+        String s4 = "abc def ghi";
+        String[] parts = s4.split(" ");
+        for(int i = 0; i < parts.length; i++) {
+            System.out.println(parts[i]);
         }
     }
 }
