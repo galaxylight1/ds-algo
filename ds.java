@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        sumOfTwoArrays(args);
+        stackIntro(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -337,6 +337,14 @@ public class ds {
     }
 
     public static void diffOfArrays(String[] args) {
-        
+        // TODO
+    }
+
+    public static void stackIntro(String[] args) {
+        Stack<Integer> st = new Stack<>();
+        st.push(10);
+        st.push(20);
+
+        System.out.println(st);
     }
 }
