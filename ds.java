@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        stockSpan(args);
+        stringsIntro(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -459,5 +459,7 @@ public class ds {
         }
 
         // s.setCharAt(0) = 'z'; // won't work
+        System.out.println(s.substring(0, 2));
+        System.out.println(s.substring(4));
     }
 }
