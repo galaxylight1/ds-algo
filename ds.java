@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        stringCompression2(args);
+        removePrimeFromArrayList(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -564,5 +564,25 @@ public class ds {
         }
 
         System.out.println(sb);
+    }
+
+    public static boolean isPrime(int n) {
+        for(int div = 2; div * div <= n; div++) {
+            if(n % div == 0) return false;
+        }
+
+        return true;
+    }
+
+    public static void removePrimeFromArrayList(String[] args) {
+        int n = scn.nextInt();
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < n; i++) arr.add(scn.nextInt());
+
+        for(int i = arr.size() - 1; i >= 0; i--) {
+            if(isPrime(arr.get(i))) arr.remove(i);
+        }
+
+        System.out.println(arr);
     }
 }
