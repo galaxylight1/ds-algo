@@ -492,6 +492,16 @@ public class ds {
         String s5 = "hello";
         String s6 = "hello";
         String s7 = new String("hello"); // no interning
+
+        // .equals, not ==
+        
+        StringBuilder sb = new StringBuilder("hello");
+        System.out.println(sb);
+        char ch = sb.charAt(0);
+        sb.setCharAt(0, 'd');
+        System.out.println(ch + " " + sb);
+
+        sb.insert(2, 'y');
     }
 
     public static boolean isPalindrome(String s) {
