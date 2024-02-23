@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        palindromeSubstrings(args);
+        stringCompression2(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -502,6 +502,9 @@ public class ds {
         System.out.println(ch + " " + sb);
 
         sb.insert(2, 'y');
+        sb.deleteCharAt(2);
+        sb.append('g');
+        System.out.println(sb.length());
     }
 
     public static boolean isPalindrome(String s) {
@@ -532,5 +535,34 @@ public class ds {
                 }
             }
         }
+    }
+
+    public static void stringCompression1(String[] args) {
+        String s = scn.nextLine();
+        StringBuilder sb = new StringBuilder(s.charAt(0) + "");
+        for(int i = 1; i < s.length(); i++) {
+            if(s.charAt(i) != s.charAt(i-1)) {
+                sb.append(s.charAt(i));
+            }
+        }
+
+        System.out.println(sb);
+    }
+    
+    public static void stringCompression2(String[] args) {
+        String s = scn.nextLine();
+        StringBuilder sb = new StringBuilder(s.charAt(0) + "");
+        int count = 1;
+        for(int i = 1; i < s.length(); i++) {
+            if(s.charAt(i) != s.charAt(i-1)) {
+                if(count == 1) sb.append(s.charAt(i));
+                else sb.append(count + "" + s.charAt(i));
+                count = 1; // reset
+            } else {
+                count++;
+            }
+        }
+
+        System.out.println(sb);
     }
 }
