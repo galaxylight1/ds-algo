@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        stringWithASCIIDifference(args);
+        permutationsOfString(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -614,5 +614,31 @@ public class ds {
         }
 
         System.out.println(sb);
+    }
+
+    public static int factorial(int n) {
+        int val = 1;
+        for(int i = 2; i <= n; i++) val *= i;
+        return val;
+    }
+
+    public static void permutationsOfString(String[] args) { // iterative
+        String s = scn.nextLine();
+        int f = factorial(s.length());
+
+        for(int i = 0; i < f; i++) {
+            StringBuilder sb = new StringBuilder(s);
+            int temp = i;
+            for(int j = s.length(); j >= 1; j--) {
+                int q = temp / j;
+                int r = temp % j;
+
+                System.out.print(sb.charAt(r));
+                sb.deleteCharAt(r);
+
+                temp = q;
+            }
+            System.out.println();
+        }
     }
 }
