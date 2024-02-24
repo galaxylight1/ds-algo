@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        permutationsOfString(args);
+        printDecreasing(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -640,5 +640,16 @@ public class ds {
             }
             System.out.println();
         }
+    }
+
+    public static void printDecreasingHelper(int n) {
+        if(n == 0) return;
+        System.out.println(n);
+        printDecreasingHelper(n - 1);
+    }
+
+    public static void printDecreasing(String[] args) {
+        int n = scn.nextInt();
+        printDecreasingHelper(n);
     }
 }
