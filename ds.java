@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        toggleCaseOfCharacters(args);
+        stringWithASCIIDifference(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -601,5 +601,18 @@ public class ds {
         }
 
         System.out.println(arr);
+    }
+
+    public static void stringWithASCIIDifference(String[] args) {
+        String s = scn.nextLine();
+        StringBuilder sb = new StringBuilder(s.charAt(0) + "");
+        for(int i = 1; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            char prev_ch = s.charAt(i-1);
+            sb.append(ch - prev_ch);
+            sb.append(ch);
+        }
+
+        System.out.println(sb);
     }
 }
