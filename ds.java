@@ -4,7 +4,8 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        printIncreasingDecreasing(args);
+        int n = scn.nextInt();
+        System.out.println(factorialRecursive(n));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -675,5 +676,11 @@ public class ds {
     public static void printIncreasingDecreasing(String[] args) {
         int n = scn.nextInt();
         printIncreasingDecreasingHelper(n);
+    }
+
+    public static int factorialRecursive(int n) {
+        if(n == 1) return 1;
+        int facN1 = factorialRecursive(n-1);
+        return n * facN1;
     }
 }
