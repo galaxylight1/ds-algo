@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        towerOfHanoi(3, 10, 20, 30);
+        displayArr(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -712,5 +712,18 @@ public class ds {
         towerOfHanoi(n-1, d1, d3, d2); // smaller problem
         System.out.println(n + "[" + d1 + "->" + d2 + "]");
         towerOfHanoi(n-1, d3, d2, d1);
+    }
+
+    public static void displayArrHelper(int[] arr, int sp) {
+        if(sp == arr.length) return;
+        System.out.println(arr[sp]);
+        displayArrHelper(arr, sp + 1);
+    }
+
+    public static void displayArr(String[] args) {
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) arr[i] = scn.nextInt();
+        displayArrHelper(arr, 0);
     }
 }
