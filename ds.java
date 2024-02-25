@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        printIncreasing(args);
+        printIncreasingDecreasing(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -663,5 +663,17 @@ public class ds {
     public static void printIncreasing(String[] args) {
         int n = scn.nextInt();
         printIncreasingHelper(n);
+    }
+
+    public static void printIncreasingDecreasingHelper(int n) {
+        if(n == 0) return;
+        System.out.println(n);
+        printIncreasingDecreasingHelper(n-1);
+        System.out.println(n);
+    }
+
+    public static void printIncreasingDecreasing(String[] args) {
+        int n = scn.nextInt();
+        printIncreasingDecreasingHelper(n);
     }
 }
