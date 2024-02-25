@@ -696,4 +696,14 @@ public class ds {
             return temp * temp;
         } else return x * temp * temp;
     }
+
+    public static void eulerPath(int n) {
+        if(n == 0) return;
+
+        System.out.println("Pre" + n);
+        eulerPath(n-1);
+        System.out.println("In" + n);
+        eulerPath(n-1);
+        System.out.println("Post" + n);
+    }
 }
