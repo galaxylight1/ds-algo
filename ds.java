@@ -5,7 +5,7 @@ public class ds {
 
     public static void main(String[] args) {
         int n = scn.nextInt();
-        System.out.println(factorialRecursive(n));
+        System.out.println(powerXN(2, 3));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -682,5 +682,11 @@ public class ds {
         if(n == 1) return 1;
         int facN1 = factorialRecursive(n-1);
         return n * facN1;
+    }
+
+    public static int powerXN(int x, int n) {
+        if(n == 0) return 1;
+        int temp = powerXN(x, n-1);
+        return x * temp;
     }
 }
