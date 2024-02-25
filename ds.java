@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        displayArr(args);
+        displayArrReverse(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -725,5 +725,18 @@ public class ds {
         int[] arr = new int[n];
         for(int i = 0; i < n; i++) arr[i] = scn.nextInt();
         displayArrHelper(arr, 0);
+    }
+
+    public static void displayArrHelperRev(int[] arr, int sp) {
+        if(sp == arr.length) return;
+        displayArrHelperRev(arr, sp + 1);
+        System.out.println(arr[sp]);
+    }
+
+    public static void displayArrReverse(String[] args) {
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) arr[i] = scn.nextInt();
+        displayArrHelperRev(arr, 0);
     }
 }
