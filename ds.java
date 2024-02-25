@@ -4,7 +4,8 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        displayArrReverse(args);
+        int[] arr = { 10, 20, 30, 40, 50 };
+        System.out.println(maxOfArray(arr, 0));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -738,5 +739,11 @@ public class ds {
         int[] arr = new int[n];
         for(int i = 0; i < n; i++) arr[i] = scn.nextInt();
         displayArrHelperRev(arr, 0);
+    }
+
+    public static int maxOfArray(int[] arr, int sp) {
+        if(sp == arr.length) return Integer.MIN_VALUE;
+        int tempMax = maxOfArray(arr, sp + 1);
+        return Math.max(tempMax, arr[sp]);
     }
 }
