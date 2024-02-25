@@ -5,7 +5,8 @@ public class ds {
 
     public static void main(String[] args) {
         int[] arr = { 10, 20, 30, 40, 50, 40, 35 };
-        System.out.println(lastIdxOfArray(arr, 0, 40));
+        int[] res = allIndicesInArray(arr, 0, 40, 0);
+        System.out.println(Arrays.toString(res));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -759,5 +760,18 @@ public class ds {
         int tempIdx = lastIdxOfArray(arr, sp + 1, ele);
         if(tempIdx == -1 && arr[sp] == ele) return sp;
         else return tempIdx;
+    }
+
+    public static int[] allIndicesInArray(int[] arr, int sp, int ele, int fsf) {
+        if(sp == arr.length) {
+            return new int[fsf];
+        }
+        if(arr[sp] == ele) {
+            int[] temp = allIndicesInArray(arr, sp + 1, ele, fsf + 1);
+            temp[fsf] = sp;
+            return temp;
+        } else {
+            return allIndicesInArray(arr, sp + 1, ele, fsf);
+        }
     }
 }
