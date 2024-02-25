@@ -4,8 +4,8 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] arr = { 10, 20, 30, 40, 50 };
-        System.out.println(maxOfArray(arr, 0));
+        int[] arr = { 10, 20, 30, 40, 50, 40, 35 };
+        System.out.println(lastIdxOfArray(arr, 0, 40));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -742,8 +742,22 @@ public class ds {
     }
 
     public static int maxOfArray(int[] arr, int sp) {
-        if(sp == arr.length) return Integer.MIN_VALUE;
+        if(sp == arr.length) return Integer.MIN_VALUE; // if(sp == arr.length - 1) return arr[sp];
         int tempMax = maxOfArray(arr, sp + 1);
         return Math.max(tempMax, arr[sp]);
+    }
+
+    public static int firstIdxOfArray(int[] arr, int sp, int ele) {
+        if(sp == arr.length) return -1;
+        if(arr[sp] == ele) return sp;
+        int tempIdx = firstIdxOfArray(arr, sp + 1, ele);
+        return tempIdx;
+    }
+
+    public static int lastIdxOfArray(int[] arr, int sp, int ele) {
+        if(sp == arr.length) return -1;
+        int tempIdx = lastIdxOfArray(arr, sp + 1, ele);
+        if(tempIdx == -1 && arr[sp] == ele) return sp;
+        else return tempIdx;
     }
 }
