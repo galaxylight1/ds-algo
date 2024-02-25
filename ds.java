@@ -4,8 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int n = scn.nextInt();
-        System.out.println(powerXN(2, 3));
+        System.out.println(powerLog(2, 4));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -688,5 +687,13 @@ public class ds {
         if(n == 0) return 1;
         int temp = powerXN(x, n-1);
         return x * temp;
+    }
+
+    public static int powerLog(int x, int n) {
+        if(n == 1) return x;
+        int temp = powerLog(x, n / 2);
+        if(n % 2 == 0) {
+            return temp * temp;
+        } else return x * temp * temp;
     }
 }
