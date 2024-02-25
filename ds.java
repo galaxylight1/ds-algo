@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println(powerLog(2, 4));
+        towerOfHanoi(3, 10, 20, 30);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -705,5 +705,12 @@ public class ds {
         System.out.println("In" + n);
         eulerPath(n-1);
         System.out.println("Post" + n);
+    }
+
+    public static void towerOfHanoi(int n, int d1, int d2, int d3) {
+        if(n == 0) return;
+        towerOfHanoi(n-1, d1, d3, d2); // smaller problem
+        System.out.println(n + "[" + d1 + "->" + d2 + "]");
+        towerOfHanoi(n-1, d3, d2, d1);
     }
 }
