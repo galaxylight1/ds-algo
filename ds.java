@@ -774,6 +774,8 @@ public class ds {
         }
     }
 
+    // subsquence = 2 ^ n
+    // substring = n * (n + 1) / 2
     static ArrayList<String> list = new ArrayList<>();
     public static void getSubsequenceHelper(String s, int sp, String res) {
         if(sp == s.length()) {
