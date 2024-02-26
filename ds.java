@@ -4,9 +4,8 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] arr = { 10, 20, 30, 40, 50, 40, 35 };
-        int[] res = allIndicesInArray(arr, 0, 40, 0);
-        System.out.println(Arrays.toString(res));
+        String[] output = getSubsequence("abc");
+        System.out.println(Arrays.toString(output));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -773,5 +772,22 @@ public class ds {
         } else {
             return allIndicesInArray(arr, sp + 1, ele, fsf);
         }
+    }
+
+    static ArrayList<String> list = new ArrayList<>();
+    public static void getSubsequenceHelper(String s, int sp, String res) {
+        if(sp == s.length()) {
+            list.add(res);
+            return;
+        }
+        getSubsequenceHelper(s, sp + 1, res + s.charAt(sp));
+        getSubsequenceHelper(s, sp + 1, res);
+    }
+
+    public static String[] getSubsequence(String s) {
+        getSubsequenceHelper(s, 0, "");
+        String[] ans = new String[list.size()];
+        for(int i = 0; i < list.size(); i++) ans[i] = list.get(i);
+        return ans;
     }
 }
