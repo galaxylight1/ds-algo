@@ -4,7 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] output = getSubsequence("abc");
+        String[] output = getKeypadComb("573");
         System.out.println(Arrays.toString(output));
     }
 
@@ -790,6 +790,28 @@ public class ds {
         getSubsequenceHelper(s, 0, "");
         String[] ans = new String[list.size()];
         for(int i = 0; i < list.size(); i++) ans[i] = list.get(i);
+        return ans;
+    }
+
+    static String[] keypad = { ".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
+    static ArrayList<String> list2 = new ArrayList<>();
+    public static void getKeypadCombHelper(String s, int sp, String res) {
+        if(sp == s.length()) {
+            list2.add(res);
+            return;
+        }
+        char ch = s.charAt(sp);
+        int chInt = ch - '0';
+        String temp = keypad[chInt];
+        for(int i = 0; i < temp.length(); i++) {
+            getKeypadCombHelper(s, sp + 1, res + temp.charAt(i));
+        }
+    }
+    
+    public static String[] getKeypadComb(String s) {
+        getKeypadCombHelper(s, 0, "");
+        String[] ans = new String[list2.size()];
+        for(int i = 0; i < list2.size(); i++) ans[i] = list2.get(i);
         return ans;
     }
 }
