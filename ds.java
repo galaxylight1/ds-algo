@@ -4,8 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] input = { 1, 2, 3 };
-        String[] output = getStairsPath(3, input);
+        String[] output = getMazePath(2, 3);
         System.out.println(Arrays.toString(output));
     }
 
@@ -832,6 +831,33 @@ public class ds {
         getStairsPathHelper(n, paths, "");
         String[] ans = new String[list3.size()];
         for(int i = 0; i < list3. size(); i++) ans[i] = list3.get(i);
+        return ans;
+    }
+
+    static ArrayList<String> list4 = new ArrayList<>();
+    public static void getMazePathHelper(int sh, int sv, int eh, int ev, String res) {
+        if(sh == eh && sv == ev) {
+            list4.add(res);
+            return;
+        }
+
+        for(int stp = 1; stp <= (ev - sv); stp++) { // horizontal move
+            getMazePathHelper(sh, sv + stp, eh, ev, res + "h" + stp); 
+        }
+
+        for(int stp = 1; stp <= (eh - sh); stp++) { // vertical move
+            getMazePathHelper(sh + stp, sv, eh, ev, res + "v" + stp); 
+        }
+
+        for(int stp = 1; stp <= (ev - sv) && stp <= (eh - sh); stp++) { // diagonal move
+            getMazePathHelper(sh + stp, sv + stp, eh, ev, res + "d" + stp);
+        }
+    }
+
+    public static String[] getMazePath(int n, int m) {
+        getMazePathHelper(0, 0, n-1, m-1, "");
+        String[] ans = new String[list4.size()];
+        for(int i = 0; i < list4. size(); i++) ans[i] = list4.get(i);
         return ans;
     }
 }
