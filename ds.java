@@ -4,7 +4,8 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] output = getKeypadComb("573");
+        int[] input = { 1, 2, 3 };
+        String[] output = getStairsPath(3, input);
         System.out.println(Arrays.toString(output));
     }
 
@@ -812,6 +813,25 @@ public class ds {
         getKeypadCombHelper(s, 0, "");
         String[] ans = new String[list2.size()];
         for(int i = 0; i < list2.size(); i++) ans[i] = list2.get(i);
+        return ans;
+    }
+
+    static ArrayList<String> list3 = new ArrayList<>();
+    public static void getStairsPathHelper(int n, int[] paths, String res) {
+        if(n == 0) {
+            list3.add(res);
+            return;
+        }
+        for(int i = 0; i < paths.length; i++) {
+            int stp = paths[i];
+            if(n - stp >= 0) getStairsPathHelper(n - stp, paths, res + stp);
+        }
+    }
+
+    public static String[] getStairsPath(int n, int[] paths) {
+        getStairsPathHelper(n, paths, "");
+        String[] ans = new String[list3.size()];
+        for(int i = 0; i < list3. size(); i++) ans[i] = list3.get(i);
         return ans;
     }
 }
