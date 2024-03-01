@@ -4,8 +4,7 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] output = getMazePath(2, 3);
-        System.out.println(Arrays.toString(output));
+        2dArrays(args);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -859,5 +858,20 @@ public class ds {
         String[] ans = new String[list4.size()];
         for(int i = 0; i < list4. size(); i++) ans[i] = list4.get(i);
         return ans;
+    }
+
+    public static void arrays2D(String[] args) {
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                arr[i][j] = scn.nextInt();
+            }
+        }
+
+        for(int i = 0; i < arr.length; i++) {
+            for(int j = 0; j < arr[i].length; j++) System.out.println(arr[i][j]);
+        }
     }
 }
