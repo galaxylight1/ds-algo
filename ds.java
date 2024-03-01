@@ -4,7 +4,11 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        matrixMultiplication(args);
+        int[][] arr = new int[3][3];
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) arr[i][j] = scn.nextInt();
+        }
+        waveTraversal(arr);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -904,6 +908,22 @@ public class ds {
         for(int i = 0; i < res.length; i++) {
             int[] temp = res[i];
             System.out.println(Arrays.toString(temp));
+        }
+    }
+
+    public static void waveTraversal(int[][] arr) {
+        boolean flag = false;
+        for(int i = 0; i < arr.length; i++) {
+            flag = !flag;
+            if(flag) {
+                for(int j = 0; j < arr[i].length; j++) {
+                    System.out.println(arr[j][i]); // vertical
+                }
+            } else {
+                for(int j = arr[i].length - 1; j >= 0; j--) {
+                    System.out.println(arr[j][i]);
+                }
+            }
         }
     }
 }
