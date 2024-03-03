@@ -4,11 +4,13 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[][] arr = new int[3][3];
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) arr[i][j] = scn.nextInt();
+        int[][] arr = new int[5][5];
+        for(int i = 0; i < 5; i++) {
+            for(int j = 0; j < 5; j++) {
+                arr[i][j] = scn.nextInt();
+            }
         }
-        waveTraversal(arr);
+        spiralTraversal(arr);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -924,6 +926,35 @@ public class ds {
                     System.out.println(arr[j][i]);
                 }
             }
+        }
+    }
+
+    public static void spiralTraversal(int[][] arr) {
+        int minR = 0;
+        int minC = 0;
+        int maxR = arr.length - 1;
+        int maxC = arr[0].length - 1;
+
+        while(maxR >= minR && maxC >= minC) {
+            for(int i = minR; i <= maxR; i++) {
+                System.out.println(arr[i][minC]);
+            }
+
+            for(int i = minC + 1; i <= maxC; i++) {
+                System.out.println(arr[maxR][i]);
+            }
+
+            for(int i = maxR - 1; i >= minR; i--) {
+                System.out.println(arr[i][maxC]);
+            }
+
+            for(int i = maxC - 1; i > minC; i--) {
+                System.out.println(arr[minR][i]);
+            }
+            minR++;
+            minC++;
+            maxR--;
+            maxC--;
         }
     }
 }
