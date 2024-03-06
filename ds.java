@@ -4,13 +4,15 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[][] arr = new int[5][5];
-        for(int i = 0; i < 5; i++) {
-            for(int j = 0; j < 5; j++) {
+        int[][] arr = new int[n][m];
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
                 arr[i][j] = scn.nextInt();
             }
         }
-        spiralTraversal(arr);
+        exitPointOfMatrix(arr);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -955,6 +957,17 @@ public class ds {
             minC++;
             maxR--;
             maxC--;
+        }
+    }
+
+    public static void exitPointOfMatrix(int[][] arr) {
+        for(int i = 0; i < arr.length; i++) {
+            for(int j = 0; j < arr[i].length; j++) {
+                int ele = arr[i][j];
+                if(ele == 1) {
+                    
+                }
+            }
         }
     }
 }
