@@ -4,9 +4,10 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[][] arr = new int[n][m];
+        Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
+        int[][] arr = new int[n][m];
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
                 arr[i][j] = scn.nextInt();
@@ -961,13 +962,55 @@ public class ds {
     }
 
     public static void exitPointOfMatrix(int[][] arr) {
-        for(int i = 0; i < arr.length; i++) {
-            for(int j = 0; j < arr[i].length; j++) {
-                int ele = arr[i][j];
-                if(ele == 1) {
-                    
-                }
+        int dir = 3; // moving direction
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        while(i >= 0 && i < arr.length && j >= 0 && j < arr[0].length) {
+            int ele = arr[i][j];
+            switch(dir) {
+                case 1: // west
+                    if(ele == 1) {
+                        dir = 2;
+                        i--;
+                        count++;
+                    }
+                    else j--;
+                    break;
+                case 2: // north
+                    if(ele == 1) {
+                        dir = 3;
+                        j++;
+                        count++;
+                    }
+                    else i--;
+                    break;
+                case 3: // east
+                    if(ele == 1) {
+                        dir = 4;
+                        i++;
+                        count++;
+                    }
+                    else j++;
+                    break;
+                case 4: // south
+                    if(ele == 1) {
+                        dir = 1;
+                        j--;
+                        count++;
+                    }
+                    else i++;
+                    break;
             }
         }
+
+        // adjustment
+        if(i < 0) i = 0;
+        if(j < 0) j = 0;
+        if(i > arr.length - 1) i--;
+        if(j > arr[0].length - 1) j--;
+
+        System.out.println("Turns -> " + count);
+        System.out.println("Exit point -> " + i + ", " + j);
     }
 }
