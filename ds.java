@@ -962,7 +962,7 @@ public class ds {
     }
 
     public static void exitPointOfMatrix(int[][] arr) {
-        int dir = 3; // moving direction
+        int dir = 3; // initial moving direction, to east
         int i = 0;
         int j = 0;
         int count = 0;
