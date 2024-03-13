@@ -6,7 +6,7 @@ public class ds {
     public static void main(String[] args) {
         int[] inp = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         Node root = constructGenericTree(inp);
-        displayGenericTree(root);
+        System.out.println(sizeOfGenericTree(root));
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -1043,5 +1043,15 @@ public class ds {
         for(Node child : root.children) {
             displayGenericTree(child);
         }
+    }
+
+    public static int sizeOfGenericTree(Node root) {
+        int size = 0;
+
+        for(Node child : root.children) {
+            size += sizeOfGenericTree(child);
+        }
+
+        return size + 1;
     }
 }
