@@ -4,16 +4,24 @@ public class ds {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        int m = scn.nextInt();
-        int[][] arr = new int[n][m];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                arr[i][j] = scn.nextInt();
+        int[] inp = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        
+        Node root; // pointer
+        Stack<Node> st = new Stack<>();
+        for(int i = 0; i < inp.length; i++) {
+            if(inp[i] == -1) {
+                st.pop();
+            } else {
+                Node t = new Node();
+                t.data = inp[i];
+                if(st.size() > 0) {
+                    st.peek().children.add(t);
+                } else {
+                    root = t;
+                }
+                st.push(t);
             }
         }
-        exitPointOfMatrix(arr);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -1012,5 +1020,10 @@ public class ds {
 
         System.out.println("Turns -> " + count);
         System.out.println("Exit point -> " + i + ", " + j);
+    }
+
+    private static class Node {
+        int data;
+        ArrayList<Node> children = new ArrayList<>();
     }
 }
