@@ -6,7 +6,7 @@ public class ds {
     public static void main(String[] args) {
         int[] inp = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         Node root = constructGenericTree(inp);
-        System.out.println(heightOfGenericTree(root));
+        traversalGenericTree(root);
     }
 
     public static void primeOrNonPrime(String[] args) {
@@ -1072,5 +1072,15 @@ public class ds {
         }
 
         return maxHeight + 1;
+    }
+
+    public static void traversalGenericTree(Node root) {
+        System.out.println("Node Pre " + root.data);
+        for(Node child : root.children) {
+            System.out.println("Edge Pre " + root.data + " -- " + child.data);
+            traversalGenericTree(child);
+            System.out.println("Edge Post " + root.data + " -- " + child.data);
+        }
+        System.out.println("Node Post " + root.data);
     }
 }
