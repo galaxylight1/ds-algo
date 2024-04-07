@@ -1,44 +1,33 @@
 package OOPS;
+import java.util.ArrayList;
 
 public class OOPS {
     public static class CustomStack {
-        int[] data;
+        ArrayList<Integer> data;
         int tos;
 
         public CustomStack(int cap) {
-            data = new int[cap];
+            data = new ArrayList<>();
             tos = -1;
         }
 
         int size() {
-            return tos + 1;
+            return data.size();
         }
 
         void display() {
-            for(int i = 0; i <= tos; i++) {
-                System.out.println(data[i]);
+            for(int i = 0; i < data.size(); i++) {
+                System.out.println(data.get(i));
             }
         }
 
         void push(int val) {
-            if(tos == data.length - 1) {
-                System.out.println("stack is full");
-            } else {
-                tos++;
-                data[tos] = val;
-            }
+            data.add(val);
         }
 
         int pop() {
-            if(tos == -1) {
-                System.out.println("underflow");
-                return -1;
-            } else {
-                int temp = data[tos];
-                data[tos] = -1;
-                tos--;
-                return temp;
-            }
+            int lastIdx = data.size() - 1;
+            return data.remove(lastIdx);
         }
     }
 
