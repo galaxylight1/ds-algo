@@ -5,7 +5,7 @@ public class Stacks {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-        minOfStack(args);
+       // ..
     }
 
     public static void stackIntro(String[] args) {
