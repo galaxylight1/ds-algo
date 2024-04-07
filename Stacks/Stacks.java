@@ -5,7 +5,7 @@ public class Stacks {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
-       // ..
+      MinStack s = new MinStack();
     }
 
     public static void stackIntro(String[] args) {
@@ -118,41 +118,52 @@ public class Stacks {
 
     // O(1) -> constant time
     public class MinStack {
-        Stack<Integer> allData;
-        Stack<Integer> minData;
+        Stack<Integer> main;
+        Stack<Integer> min;
 
         public MinStack() {
-            allData = new Stack<>();
-            minData = new Stack<>();
+            main = new Stack<>();
+            min = new Stack<>();
         }
 
         int size() {
-            return allData.size();
+            return main.size();
         }
 
         void push(int val) {
-            allData.push(val);
-            if(minData.size() == 0 || val <= minData.peek()) {
-                minData.push(val);
+            if(size() == 0) {
+                main.push(val);
+                min.push(val);
+            } else {
+                if(val < min.peek()) {
+                    min.push(val);
+                } else {
+                    min.push(min.peek());
+                }
+                main.push(val);
             }
         }
 
         int pop() {
-            if(size() == 0) return -1;
-            else {
-                int val = allData.pop();
-                if(val == minData.peek()) minData.pop();
-                return val;
-            }
+            min.pop();
+            return main.pop();
         }
 
         int top() {
-            return allData.peek();
+            if(size() == 0) return -1;
+            else return main.peek();
         }
 
         int min() {
-            if(minData.size() == 0) return -1;
-            return minData.peek();
+            if(size() == 0) return -1;
+            return min.peek();
         }
     }
+
+    // 8
+    // 17
+    // 47
+    // 7 + (7-8) => val + (val - min)
+    // 30
+    // 2 + (2-7) => -3
 }
