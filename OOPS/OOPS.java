@@ -16,8 +16,9 @@ public class OOPS {
         }
 
         void display() {
-            String res = Arrays.toString(data);
-            System.out.println(res);
+            for(int i = 0; i <= tos; i++) {
+                System.out.println(data[i]);
+            }
         }
 
         void push(int val) {
@@ -28,12 +29,26 @@ public class OOPS {
                 data[tos] = val;
             }
         }
+
+        int pop() {
+            if(tos == -1) {
+                System.out.println("underflow");
+                return -1;
+            } else {
+                int temp = data[tos];
+                data[tos] = -1;
+                tos--;
+                return temp;
+            }
+        }
     }
 
     public static void main(String[] args) {
         CustomStack s = new CustomStack(3);
         s.push(3);
         s.push(2);
+        s.display();
+        s.pop();
         s.display();
     }
 }
