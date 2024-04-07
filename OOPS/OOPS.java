@@ -1,5 +1,4 @@
 package OOPS;
-import java.util.*;
 
 public class OOPS {
     public static class CustomStack {
