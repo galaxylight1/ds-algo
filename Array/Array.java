@@ -1,8 +1,8 @@
-package Arrays;
-
+package Array;
 import java.util.*;
+import Numbers.Numbers;
 
-public class Arrays {
+public class Array {
     static Scanner scn = new Scanner(System.in);
 
     public static void arrayIntro(String[] args) {
@@ -117,4 +117,18 @@ public class Arrays {
     }
 
     public static void diffOfArrays(String[] args) {
+        // TODO: similar
+    }
+
+    public static void removePrimeFromArrayList(String[] args) {
+        int n = scn.nextInt();
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < n; i++) arr.add(scn.nextInt());
+
+        for(int i = arr.size() - 1; i >= 0; i--) {
+            if(Numbers.isPrime(arr.get(i))) arr.remove(i);
+        }
+
+        System.out.println(arr);
+    }
 }

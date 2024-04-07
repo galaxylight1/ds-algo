@@ -4,6 +4,14 @@ import java.util.*;
 
 public class Numbers {
     static Scanner scn = new Scanner(System.in);
+
+    public static boolean isPrime(int n) {
+        for(int div = 2; div * div <= n; div++) {
+            if(n % div == 0) return false;
+        }
+
+        return true;
+    }
     
     public static void primeOrNonPrime(String[] args) {
         int t = scn.nextInt();
