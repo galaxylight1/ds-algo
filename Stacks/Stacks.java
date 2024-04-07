@@ -4,6 +4,10 @@ import java.util.*;
 public class Stacks {
     static Scanner scn = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        minOfStack(args);
+    }
+
     public static void stackIntro(String[] args) {
         Stack<Integer> st = new Stack<>();
         st.push(10);
@@ -110,5 +114,45 @@ public class Stacks {
         }
 
         System.out.println(Arrays.toString(res));
+    }
+
+    // O(1) -> constant time
+    public class MinStack {
+        Stack<Integer> allData;
+        Stack<Integer> minData;
+
+        public MinStack() {
+            allData = new Stack<>();
+            minData = new Stack<>();
+        }
+
+        int size() {
+            return allData.size();
+        }
+
+        void push(int val) {
+            allData.push(val);
+            if(minData.size() == 0 || val <= minData.peek()) {
+                minData.push(val);
+            }
+        }
+
+        int pop() {
+            if(size() == 0) return -1;
+            else {
+                int val = allData.pop();
+                if(val == minData.peek()) minData.pop();
+                return val;
+            }
+        }
+
+        int top() {
+            return allData.peek();
+        }
+
+        int min() {
+            if(minData.size() == 0) return -1;
+            return minData.peek();
+        }
     }
 }
