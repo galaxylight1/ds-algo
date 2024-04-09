@@ -117,7 +117,7 @@ public class Stacks {
     }
 
     // O(1) -> constant time
-    public class MinStack {
+    public static class MinStack {
         Stack<Integer> main;
         Stack<Integer> min;
 

@@ -7,7 +7,7 @@ public class Queues { // FIFO
         q.add(3);
     }
 
-    public class CustomQueue { 
+    public static class CustomQueue { 
         int[] data;
         int front;
         int rear;
@@ -25,7 +25,7 @@ public class Queues { // FIFO
                 System.out.println("Queue overflow");
                 return;
             }
-            int rear = (front + size) % data.length; // to get the index where element can be inserted
+            rear = (front + size) % data.length; // to get the index where element can be inserted
             data[rear] = val;
             size++;
         }
