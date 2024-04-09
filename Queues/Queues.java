@@ -22,12 +22,22 @@ public class Queues { // FIFO
 
         void add(int val) {
             if(size == data.length) {
-                System.out.println("Queue overflow");
-                return;
+                int[] newData = new int[2 * data.length];
+                for(int i = 0; i < size; i++) {
+                    int idx = (front + i) % data.length;
+                    newData[i] = data[idx];
+                }
+                data = newData;
+                front = 0;
+                rear = (front + size) % data.length; // to get the index where element can be inserted
+                data[rear] = val;
+                size++;
             }
-            rear = (front + size) % data.length; // to get the index where element can be inserted
-            data[rear] = val;
-            size++;
+            else {
+                rear = (front + size) % data.length; // to get the index where element can be inserted
+                data[rear] = val;
+                size++;
+            }
         }
 
         int remove() {
