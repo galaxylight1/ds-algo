@@ -100,7 +100,47 @@ public class LinkedList {
         size++;
     }
 
+    void removeLast() {
+        if(size == 1) {
+            head = tail = null;
+            size = 0;
+        } else {
+            Node temp = head;
+            for(int i = 0; i < size - 2; i++) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+            size--;
+        }
+    }
+
+    void removeAtIndex(int idx) {
+        // assuming idx is valid
+        if(size == 0) { // edge case
+            head = tail = null;
+            return;
+        }
+        if(idx == 0) {
+            head = head.next;
+            size--;
+        } else {
+            Node temp = head;
+            for(int i = 0; i < idx - 1; i++) {
+                temp = temp.next;
+            }
+            Node nextNode = temp.next;
+            temp.next = nextNode.next;
+            size--;
+        }
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
+        l.addLast(10);
+        l.addLast(20);
+        l.addLast(30);
+        l.removeAtIndex(1);
+        l.display();
     }
 }
