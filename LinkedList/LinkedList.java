@@ -53,6 +53,26 @@ public class LinkedList {
         size--;
     }
 
+    void addAtIndex(int val, int idx) {
+        // assuming idx is valid index
+        if(idx == 0) {
+            addFirst(val);
+        } else if(idx == size) {
+            addLast(val);
+        } else {
+            Node n = new Node();
+            n.data = val;
+            Node temp = new Node();
+            temp = head;
+            for(int i = 0; i < idx - 1; i++) {
+                temp = temp.next;
+            }
+            n.next = temp.next;
+            temp.next = n;
+            size++;
+        }
+    }
+
     int getAt(int idx) {
         if(size == 0) return -1;
         else {
@@ -65,14 +85,22 @@ public class LinkedList {
         }
     }
 
+    void addFirst(int val) {
+        if(size == 0) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            head = tail = temp;
+        } else {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = head;
+            head = temp;
+        }
+        size++;
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
-        l.addLast(20);
-        l.addLast(50);
-        l.addLast(70);
-        System.out.println(l.head.data);
-        System.out.println(l.size());
-        l.display();
-        System.out.println(l.getAt(2));
     }
 }
