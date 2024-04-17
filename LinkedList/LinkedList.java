@@ -135,12 +135,40 @@ public class LinkedList {
         }
     }
 
+    private Node getNodeAt(int idx) {
+        Node temp = head;
+        for(int i = 0; i < idx; i++) {
+            temp = temp.next;
+        }
+
+        return temp;
+    }
+
+    void reverseDI() {
+        int li = 0;
+        int ri = size - 1;
+
+        while(li < ri) {
+            Node left = getNodeAt(li);
+            Node right = getNodeAt(ri);
+
+            int temp = left.data;
+            left.data = right.data;
+            right.data = temp;
+
+            li++;
+            ri--;
+        }
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.addLast(10);
         l.addLast(20);
         l.addLast(30);
-        l.removeAtIndex(1);
+        l.display();
+        System.out.println();
+        l.reverseDI();
         l.display();
     }
 }
