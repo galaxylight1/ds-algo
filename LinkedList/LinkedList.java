@@ -281,18 +281,45 @@ public class LinkedList {
         this.size = res.size;
     }
 
+    void oddEven() {
+        LinkedList odd = new LinkedList();
+        LinkedList even = new LinkedList();
+
+        while(this.size() > 0) {
+            int temp = head.data;
+            this.removeFirst();
+            if(temp % 2 == 0) {
+                even.addLast(temp);
+            } else {
+                odd.addLast(temp);
+            }
+        }
+
+        
+        if(odd.size > 0 && even.size > 0) {
+            odd.tail.next = even.head;
+            this.head = odd.head;
+            this.tail = even.tail;
+            this.size = odd.size + even.size;
+        } else if(odd.size == 0) {
+            this.head = even.head;
+            this.tail = even.tail;
+            this.size = even.size;
+        } else if(even.size == 0) {
+            this.head = odd.head;
+            this.tail = odd.tail;
+            this.size = odd.size;
+        }
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
+        // l.addLast(2);
         l.addLast(2);
-        l.addLast(2);
-        l.addLast(1);
-        l.addLast(1);
-        l.addLast(5);
-        l.addLast(5);
-        l.addLast(5);
-        l.addLast(5);
+        l.addLast(4);
+        l.addLast(6);
 
-        l.removeDuplicates();
+        l.oddEven();
         l.display();
     }
 }
