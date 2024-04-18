@@ -206,13 +206,15 @@ public class LinkedList {
         return slow.data;
     }
 
-    LinkedList mergeTwoSortedLists(LinkedList l1, LinkedList l2) {
+    static LinkedList mergeTwoSortedLists(LinkedList l1, LinkedList l2) {
         Node one = l1.head;
         Node two = l2.head;
+        Node end1 = l1.tail.next;
+        Node end2 = l2.tail.next;
 
         LinkedList res = new LinkedList();
 
-        while (one != null && two != null) {
+        while (one != end1 && two != end2) {
             if(one.data < two.data) {
                 res.addLast(one.data);
                 one = one.next;
@@ -222,11 +224,11 @@ public class LinkedList {
             }
         }
 
-        while(one != null) {
+        while(one != end1) {
             res.addLast(one.data);
             one = one.next;
         }
-        while(two != null) {
+        while(two != end2) {
             res.addLast(two.data);
             two = two.next;
         }
@@ -234,7 +236,43 @@ public class LinkedList {
         return res;
     }
 
+    static Node midNode(Node head, Node tail) {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != tail && fast.next != tail) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    static LinkedList mergeSort(Node head, Node tail) {
+        if(head == tail) {
+            LinkedList temp = new LinkedList();
+            temp.head = head;
+            temp.tail = tail;
+            temp.size = 1;
+            return temp;
+        }
+
+        Node mid = midNode(head, tail);
+
+        LinkedList l1 = mergeSort(head, mid);
+        LinkedList l2 = mergeSort(mid.next, tail);
+
+        return mergeTwoSortedLists(l1, l2);
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
+        l.addLast(2);
+        l.addLast(1);
+        l.addLast(7);
+        l.addLast(5);
+
+        LinkedList res = mergeSort(l.head, l.tail);
+        res.display();
     }
 }
