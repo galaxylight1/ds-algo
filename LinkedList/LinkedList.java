@@ -195,14 +195,46 @@ public class LinkedList {
         return slow.data;
     }
 
+    int midOfLL() {
+        Node slow = head;
+        Node fast = head;
+        while(fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.data;
+    }
+
+    LinkedList mergeTwoSortedLists(LinkedList l1, LinkedList l2) {
+        Node one = l1.head;
+        Node two = l2.head;
+
+        LinkedList res = new LinkedList();
+
+        while (one != null && two != null) {
+            if(one.data < two.data) {
+                res.addLast(one.data);
+                one = one.next;
+            } else {
+                res.addLast(two.data);
+                two = two.next;
+            }
+        }
+
+        while(one != null) {
+            res.addLast(one.data);
+            one = one.next;
+        }
+        while(two != null) {
+            res.addLast(two.data);
+            two = two.next;
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
-        l.addLast(10);
-        l.addLast(20);
-        l.addLast(30);
-        l.display();
-        System.out.println();
-        l.reversePI();
-        l.display();
     }
 }
