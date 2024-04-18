@@ -4,6 +4,11 @@ public class LinkedList {
     public static class Node {
         int data;
         Node next;
+
+        Node() {
+            data = Integer.MAX_VALUE;
+            next = null;
+        }
     }
 
     Node head;
@@ -161,6 +166,21 @@ public class LinkedList {
         }
     }
 
+    void reversePI() {
+        Node prev = null;
+        Node curr = head;
+        while(curr != null) {
+            Node nextNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+
+        Node temp = head;
+        head = tail;
+        tail = temp;
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.addLast(10);
@@ -168,7 +188,7 @@ public class LinkedList {
         l.addLast(30);
         l.display();
         System.out.println();
-        l.reverseDI();
+        l.reversePI();
         l.display();
     }
 }
