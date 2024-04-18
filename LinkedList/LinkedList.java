@@ -265,14 +265,34 @@ public class LinkedList {
         return mergeTwoSortedLists(l1, l2);
     }
 
+    void removeDuplicates() {
+        LinkedList res = new LinkedList();
+
+        while(this.size() > 0) {
+            int temp = head.data;
+            this.removeFirst();
+            if(res.size() == 0 || res.tail.data != temp) {
+                res.addLast(temp);
+            }
+        }
+
+        this.head = res.head;
+        this.tail = res.tail;
+        this.size = res.size;
+    }
+
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.addLast(2);
+        l.addLast(2);
         l.addLast(1);
-        l.addLast(7);
+        l.addLast(1);
+        l.addLast(5);
+        l.addLast(5);
+        l.addLast(5);
         l.addLast(5);
 
-        LinkedList res = mergeSort(l.head, l.tail);
-        res.display();
+        l.removeDuplicates();
+        l.display();
     }
 }
