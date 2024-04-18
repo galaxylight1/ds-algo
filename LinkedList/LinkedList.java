@@ -105,7 +105,7 @@ public class LinkedList {
         size++;
     }
 
-    void removeLast() {
+    void removeLast() { // O(n)
         if(size == 1) {
             head = tail = null;
             size = 0;
@@ -179,6 +179,20 @@ public class LinkedList {
         Node temp = head;
         head = tail;
         tail = temp;
+    }
+
+    int kthFromLast(int k) {
+        Node slow = head;
+        Node fast = head;
+        
+        for(int i = 0; i < k; i++) fast = fast.next;
+
+        while(fast != tail) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow.data;
     }
 
     public static void main(String[] args) {
